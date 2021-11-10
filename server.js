@@ -38,21 +38,6 @@ app.get('/cheeses', async (req, res) => {
         );
     };
 });
-//delete route
-app.delete('/cheeses/:id', async (req, res) => {
-    try {
-        res.json(await Cheese.findByIdAndRemove(req.params.id))
-    } catch (error) {
-        res.status(400).json(error);
-    };
-});
-app.put('/cheeses:id', async (req, res) => {
-    try {
-        res.json(await Cheese.findByIdAndUpdate(req.params.id, req.body, { new: true }));
-    } catch (error) {
-        res.status(400).json(error);
-    };
-});
 //create route
 app.post('/cheeses', async (req, res) => {
     try {
@@ -61,6 +46,23 @@ app.post('/cheeses', async (req, res) => {
         res.status(400).json(error);
     };
 });
+app.put('/cheeses/:id', async (req, res) => {
+    try {
+        res.json(await Cheese.findByIdAndUpdate(req.params.id, req.body, { new: true }));
+    } catch (error) {
+        res.status(400).json(error);
+    };
+});
+//delete route
+app.delete('/cheeses/:id', async (req, res) => {
+    try {
+        res.json(await Cheese.findByIdAndRemove(req.params.id))
+    } catch (error) {
+        res.status(400).json(error);
+    };
+});
+
+
 
 
 
